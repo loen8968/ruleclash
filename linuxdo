@@ -1,0 +1,441 @@
+
+#代理分组
+#  include-all-providers: true 自动引入【proxy-providers】所有代理集合，顺序将按照名称排序
+proxy-groups:
+  #------------------------基础分组------------------------#
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+      - 🔯 故障转移
+      - 🔮 负载均衡
+      - 🇭🇰 香港节点
+      - 🇲🇴 澳门节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇰🇷 韩国节点
+      - 🇺🇲 美国节点
+      - 🇬🇧 英国节点
+      - 🇩🇪 德国节点
+      - 🇫🇷 法国节点
+      - 🇮🇳 印度节点
+      - 🇸🇬 狮城节点
+      - 🇮🇩 印尼节点
+      - 🇻🇳 越南节点
+      - 🇹🇭 泰国节点
+      - 🇦🇺 澳洲节点
+      - 🇧🇷 巴西节点
+      - 🌍 其他节点
+      - DIRECT
+
+  - name: ♻️ 自动选择
+    type: url-test
+    include-all-providers: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100            # 调整延迟容差为100ms
+
+  - name: 🔯 故障转移
+    type: fallback
+    include-all-providers: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+
+  - name: 🔮 负载均衡
+    type: load-balance
+    strategy: consistent-hashing
+    include-all-providers: true
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+
+  #------------------------地区分组------------------------#
+  - name: 🇭🇰 香港节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)港|hk|hongkong|hong kong"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇲🇴 澳门节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)澳门|门|mo|macao"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇨🇳 台湾节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)台|tw|taiwan|taipei"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇯🇵 日本节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)日本|jp|japan|tokyo|osaka"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇰🇷 韩国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)韩|kr|korea|seoul"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇺🇲 美国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)美|us|united states|america|los angeles|san jose|silicon valley"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇬🇧 英国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)英|uk|united kingdom|london"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇩🇪 德国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)德|de|germany|frankfurt"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇫🇷 法国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)法|fr|france|paris"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇮🇳 印度节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)印度|in|india|mumbai"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇸🇬 狮城节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)新|sg|singapore"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇮🇩 印尼节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)印尼|印度尼西亚|id|indonesia|jakarta"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇻🇳 越南节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)越南|vn|vietnam"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇹🇭 泰国节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)泰国|th|thailand|bangkok"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇦🇺 澳洲节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)澳大利亚|au|australia|sydney"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🇧🇷 巴西节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)巴西|br|brazil"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  - name: 🌍 其他节点
+    type: url-test
+    include-all-providers: true
+    filter: "(?i)^(?!.*(香港|台湾|日本|韩国|新加坡|美国|英国|德国|法国|印度|泰国|越南|印尼|澳大利亚|巴西|港|台|日|韩|新|美|英|德|法|印|泰|越|尼|澳|巴|hk|tw|jp|kr|sg|us|uk|de|fr|in|th|vn|id|au|br)).*"
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 100
+
+  #------------------------场景分组------------------------#
+
+  - name: 🎬 国外媒体
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+
+  - name: 🎮 游戏平台
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🔯 故障转移
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+      - DIRECT
+
+  - name: 📱 即时通讯
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🔯 故障转移
+      - 🇭🇰 香港节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+
+  - name: 🤖 AI平台
+    type: select
+    proxies:
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+      - 🇰🇷 韩国节点
+      - 🚀 节点选择
+      - 🔯 故障转移
+
+  - name: 🔧 GitHub
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🔯 故障转移
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+      - DIRECT
+
+
+  - name: Ⓜ️ 微软服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+      - DIRECT
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🇭🇰 香港节点
+      - 🇨🇳 台湾节点
+      - 🇯🇵 日本节点
+      - 🇺🇲 美国节点
+      - 🇸🇬 狮城节点
+      - DIRECT
+
+  #------------------------特殊分组------------------------#
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+
+  - name: 🛑 广告拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🍃 应用净化
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🆎 AdBlock
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🛡️ 隐私防护
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+      - 🔯 故障转移
+
+# 规则提供商配置 - 优化版
+rule-providers:
+  # 广告规则
+  reject:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/reject.txt"
+    path: ./ruleset/reject.yaml
+    interval: 86400
+
+  # 隐私规则
+  privacy:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Privacy/Privacy.yaml"
+    path: ./ruleset/privacy.yaml
+    interval: 86400
+
+  # 广告扩展规则
+  reject-extra:
+    type: http
+    behavior: domain
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/AdvertisingLite/AdvertisingLite.yaml"
+    path: ./ruleset/reject-extra.yaml
+    interval: 86400
+
+  # AI平台规则
+  ai-platforms:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/OpenAI/OpenAI.yaml"
+    path: ./ruleset/ai-platforms.yaml
+    interval: 86400
+
+  # 流媒体规则
+  streaming:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/GlobalMedia/GlobalMedia.yaml"
+    path: ./ruleset/streaming.yaml
+    interval: 86400
+
+  # 社交通讯规则
+  social:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Telegram/Telegram.yaml"
+    path: ./ruleset/social.yaml
+    interval: 86400
+
+  # 微软服务规则
+  microsoft:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Microsoft/Microsoft.yaml"
+    path: ./ruleset/microsoft.yaml
+    interval: 86400
+
+  # 苹果服务规则
+  apple:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Apple/Apple.yaml"
+    path: ./ruleset/apple.yaml
+    interval: 86400
+
+  # 游戏平台规则
+  games:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/Game/Game.yaml"
+    path: ./ruleset/games.yaml
+    interval: 86400
+
+  # 开发平台规则
+  dev-platforms:
+    type: http
+    behavior: classical
+    url: "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script/rule/Clash/GitHub/GitHub.yaml"
+    path: ./ruleset/dev-platforms.yaml
+    interval: 86400
+
+# 规则配置 - 优化版
+rules:
+  # 优先处理
+  - RULE-SET,reject,🛑 广告拦截,no-resolve
+  - RULE-SET,privacy,🛡️ 隐私防护,no-resolve
+  - RULE-SET,reject-extra,🆎 AdBlock,no-resolve
+
+  # 本地局域网
+  - DOMAIN-SUFFIX,local,DIRECT
+  - DOMAIN-SUFFIX,localhost,DIRECT
+  - IP-CIDR,127.0.0.0/8,DIRECT
+  - IP-CIDR,172.16.0.0/12,DIRECT
+  - IP-CIDR,192.168.0.0/16,DIRECT
+  - IP-CIDR,10.0.0.0/8,DIRECT
+  - IP-CIDR,17.0.0.0/8,DIRECT
+  - IP-CIDR,100.64.0.0/10,DIRECT
+  - IP-CIDR,224.0.0.0/4,DIRECT
+  - IP-CIDR6,fe80::/10,DIRECT
+
+  # 应用分流
+  - RULE-SET,ai-platforms,🤖 AI平台,no-resolve
+  - RULE-SET,streaming,🎬 国外媒体,no-resolve
+  - RULE-SET,social,📱 即时通讯,no-resolve
+  - RULE-SET,microsoft,Ⓜ️ 微软服务,no-resolve
+  - RULE-SET,apple,🍎 苹果服务,no-resolve
+  - RULE-SET,games,🎮 游戏平台,no-resolve
+  - RULE-SET,dev-platforms,🔧 GitHub,no-resolve
+
+  # 自定义规则
+  - PROCESS-NAME,clash,DIRECT
+  - PROCESS-NAME,v2ray,DIRECT
+  - PROCESS-NAME,xray,DIRECT
+  - PROCESS-NAME,naive,DIRECT
+  - PROCESS-NAME,trojan,DIRECT
+  - PROCESS-NAME,trojan-go,DIRECT
+  - PROCESS-NAME,ss-local,DIRECT
+  - PROCESS-NAME,privoxy,DIRECT
+  - PROCESS-NAME,leaf,DIRECT
+  - PROCESS-NAME,Thunder,DIRECT
+  - PROCESS-NAME,DownloadService,DIRECT
+  - PROCESS-NAME,qBittorrent,DIRECT
+  - PROCESS-NAME,Transmission,DIRECT
+  - PROCESS-NAME,fdm,DIRECT
+  - PROCESS-NAME,aria2c,DIRECT
+  - PROCESS-NAME,Folx,DIRECT
+  - PROCESS-NAME,NetTransport,DIRECT
+  - PROCESS-NAME,uTorrent,DIRECT
+  - PROCESS-NAME,WebTorrent,DIRECT
+
+  # 地域规则
+  - GEOIP,LAN,DIRECT,no-resolve
+  - GEOIP,CN,DIRECT,no-resolve
+
+  # 兜底规则
+  - MATCH,🚀 节点选择
